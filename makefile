@@ -12,10 +12,13 @@ package.json :
 node_modules/dredd :
 	npm i dredd --save-dev
 
-app : src/users.js
+app : express src/users.js
 	express --no-view app
 	cd app && npm i
 	cp src/users.js app/routes/users.js
+
+express :
+	npm i -g express-generator
 
 api.oas20.yaml : ./node_modules/yamljs api.oas20.json
 	./node_modules/yamljs/bin/json2yaml api.oas20.json > api.oas20.yaml
